@@ -1,5 +1,6 @@
 const http=require("http");
 const fs= require("fs");
+const _=require("lodash");
 
 const server=http.createServer((req,res) => {
     console.log("Request from browser to server");
@@ -9,6 +10,13 @@ const server=http.createServer((req,res) => {
     // res.write("<h1>hello world</h1>");
     // res.write("<h3>How are you</h3>")
     // res.end("<h3>Testing response</h3>");
+
+    greet = _.once(() =>{
+        console.log("hello from greet");
+    })
+    greet();
+    greet();
+    greet();
 
     let path="./views";
     switch(req.url){
